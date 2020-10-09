@@ -50,6 +50,7 @@ export default class Home extends Vue {
 <style lang="scss">
 .home-wrap {
   height: 100vh;
+  background-image: url('~@/assets/images/bgimages/3.jpg');
 }
 </style>
 
