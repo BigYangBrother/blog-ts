@@ -6,7 +6,10 @@
         <p class="article-desc">{{articleData.articleDesc}}</p>
       </div>
       <div class="article-info">
-        <img class="header-img info-item" :src="articleData.headerImg">
+        <img
+          class="header-img info-item"
+          :src="articleData.headerImg"
+        >
         <span class="author-name info-item">{{articleData.author}}</span>
         <span class="article-page-num info-item">
           <i class="iconfont iconbrowse"></i>
@@ -19,7 +22,10 @@
       </div>
     </div>
     <div class="article-item-right">
-      <img class="article-img" :src="articleData.articleImage">
+      <img
+        class="article-img"
+        :src="articleData.articleImage"
+      >
       <div class="article-info">
         <p class="article-title">{{articleData.articleTitle}}</p>
         <p class="article-desc">{{articleData.articleDesc}}</p>
@@ -29,11 +35,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop ,Vue } from "vue-property-decorator"
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class ArticleItem extends Vue {
-  @Prop({default: {}}) private articleData!: object;
+  @Prop({ default: {} })
+  private articleData!: object;
 }
 </script>
 
@@ -58,8 +65,22 @@ export default class ArticleItem extends Vue {
     box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.5);
   }
 }
+@keyframes slide-in-blurred-bottom {
+  0% {
+    transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
+    transform-origin: 50% 100%;
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scaleY(1) scaleX(1);
+    transform-origin: 50% 50%;
+    filter: blur(0);
+    opacity: 1;
+  }
+}
 .article-item-wrap {
-  background: rgba(255, 255, 255, .8);
+  background: rgba(255, 255, 255, 0.8);
   width: 650px;
   margin-bottom: 15px;
   height: 200px;
@@ -68,6 +89,7 @@ export default class ArticleItem extends Vue {
   // animation: slide-in-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   display: flex;
   justify-content: space-between;
+  animation: slide-in-blurred-bottom .6s cubic-bezier(.23,1.000,.32,1.000) both;
   .article-item-left {
     text-align: left;
     margin-right: 10px;
@@ -109,7 +131,7 @@ export default class ArticleItem extends Vue {
     .article-img {
       width: 200px;
       border-radius: 4px;
-      transition: all .6s;
+      transition: all 0.6s;
     }
     .article-info {
       position: absolute;
@@ -120,10 +142,10 @@ export default class ArticleItem extends Vue {
       text-align: center;
       backface-visibility: hidden;
       background: #333;
-      background: rgba(0,0,0,.6);
+      background: rgba(0, 0, 0, 0.6);
       visibility: hidden;
       opacity: 0;
-      transition: all .35s ease-in-out;
+      transition: all 0.35s ease-in-out;
       .article-title {
         text-transform: uppercase;
         color: #fff;
@@ -132,7 +154,7 @@ export default class ArticleItem extends Vue {
         padding: 10px;
         background: #111;
         margin: 30px 0 0;
-        transition: all .35s ease-in-out;
+        transition: all 0.35s ease-in-out;
         transform: translateX(-100%);
       }
       .article-desc {
@@ -142,7 +164,7 @@ export default class ArticleItem extends Vue {
         color: #bbb;
         padding: 20px;
         text-align: center;
-        transition: all .35s .1s linear;
+        transition: all 0.35s 0.1s linear;
         transform: translateX(100%);
         overflow: hidden;
         white-space: nowrap;
@@ -153,19 +175,20 @@ export default class ArticleItem extends Vue {
       .article-info {
         visibility: visible;
         opacity: 1;
-        .article-title, .article-desc {
+        .article-title,
+        .article-desc {
           transform: translateX(0);
         }
       }
       .article-img {
         transform: scale(1.1);
-        box-shadow: 0 5px 10px 5px rgba(110,110,110,.4);
+        box-shadow: 0 5px 10px 5px rgba(110, 110, 110, 0.4);
       }
     }
   }
 }
 .article-item-wrap:hover {
-  animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: shadow-drop-2-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 </style>
 
