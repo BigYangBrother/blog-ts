@@ -89,7 +89,7 @@ export default class ArticleItem extends Vue {
   // animation: slide-in-tl 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   display: flex;
   justify-content: space-between;
-  animation: slide-in-blurred-bottom .6s cubic-bezier(.23,1.000,.32,1.000) both;
+  // animation: slide-in-blurred-bottom .6s cubic-bezier(.23,1.000,.32,1.000) both;
   .article-item-left {
     text-align: left;
     margin-right: 10px;

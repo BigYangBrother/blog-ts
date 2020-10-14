@@ -12,7 +12,7 @@
           <i :class="['iconfont', item.icon]"></i>
           <span>{{item.label}}</span>
         </a>
-        <div v-else>
+        <div v-else @click="navAction(item.key)">
           <i :class="['iconfont', item.icon]"></i>
           <span>{{item.label}}</span>
         </div>
@@ -22,7 +22,14 @@
       <img
         :src="headerImg"
         class="header-img"
+        @click="navAction(2)"
       >
+      <!-- <div class="my-info-wrap">
+        <div class="info-item" v-for="item in contact">
+          <i :class="['iconfont', item.icon]"></i>
+          <span>{{item.label}}</span>
+        </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -47,6 +54,12 @@ export default class Home extends Vue {
       link: "",
       icon: "iconphone",
       key: 1
+    },
+    {
+      label: "博客",
+      link: "",
+      icon: "iconlink",
+      key: 2
     }
   ];
   private contact: Array<object> = [
@@ -75,6 +88,14 @@ export default class Home extends Vue {
       key: 4
     }
   ];
+  private navAction(key: number): void {
+    switch (key) {
+      case 1 : console.log('1')
+      break
+      case 2: this.$router.push('Index')
+      break
+    }
+  }
 }
 </script>
 
@@ -158,14 +179,22 @@ export default class Home extends Vue {
       }
     }
   }
-  .header-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    animation: bounce-in-top 1.1s both;
-    box-shadow: inset 0 0 10px #000;
-    padding: 2px;
-    opacity: 1;
+  .page-main {
+    .header-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      animation: bounce-in-top 1.1s both;
+      box-shadow: inset 0 0 10px #000;
+      padding: 2px;
+      opacity: 1;
+    }
+    .my-info-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(200px);
+    }
   }
 }
 </style>
